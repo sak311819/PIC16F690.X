@@ -6,3 +6,6 @@ interrupts on start/stop/transmit complete.
 The code uploaded here has been only tested in proteus simulation software. If you 
 test this code in hardware and identify any issues, please report it in the
 comments/bug/pull request etc.
+#Note:
+This code is under development and cannot be used in safety critical applications
+where it can cause damage to equipment, personnel at work or medical applications etc.
