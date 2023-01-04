@@ -1,17 +1,17 @@
 /*
  * File:   main.c
  * Author: Shahzad Anwar Khan
- *
+ * github.com/sak311819
  * Created on January 2, 2023, 11:26 AM
- */
-
-//#define SCL TRISBbits.TRISB6
-//
-//#define SDA TRISBbits.TRISB4
-//#define I2C_Interrupt PIR1bits.SSPIF 
-//#define stop_bit SSPSTATbits.I2C_STOP
-//#define start_bit SSPSTATbits.I2C_START
-
+ 
+    *******************  Copyright Note ***************************************************
+    Anyone having this code can use it for deveoplment purposes only. Redistribution
+    of this code under antoher name and without permission will be an illegal and immoral
+    action. If you want to improve this code, you are welcome to make forks, contribute and
+    make pull requests or report bugs on github. All types of feedback(non-abusive of course)
+    is welcomed and will help make this project more useful for everyone out there. Thanks!
+    *****************************************************************************************
+*/
 // PIC16F690 Configuration Bit Settings
 
 // 'C' source line config statements
