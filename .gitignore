@@ -28,4 +28,5 @@
 .svn
 *.bak
 *.p1
-
+# test files
+**/BMP280

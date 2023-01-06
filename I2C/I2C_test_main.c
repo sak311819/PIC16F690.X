@@ -44,10 +44,12 @@ void main(void) {
     printf("init complete\n\r");
     printf("Test I2C\n\r");
     while(1){
-        int i;
-        for(i=0;i<1000;i++){I2C_Delay();} // arbitrary delay
+        unsigned int i;
+        for(i=0;i<5000;i++){I2C_Delay();} // arbitrary delay
     printf("Sending single byte 0x34\n\r\n\r");
+    I2C_Start();
     I2C_Transmit_Byte(0x34);
+    I2C_Stop();
     printf("Sending data 0xA5 to slave address 0x55\n\r\n\r");
     if(I2C_Single_Write(slave_address,0xA5)){
         printf("slave responded with ack, data sent\n\r\n\r");
