@@ -170,7 +170,7 @@ unsigned int I2C_Multi_Read(unsigned char slave_address,unsigned char*ptr,unsign
     unsigned char data=0;
     *ptr=I2C_Receive_Byte();
     if(len>1){
-    I2C_Send_ACK(NACK);}
+    I2C_Send_ACK(ACK);}
     ptr++;
     len--;
     count++;    // this count will be returned, in future, I2C collisions will be addressed

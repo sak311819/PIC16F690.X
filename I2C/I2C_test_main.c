@@ -61,6 +61,12 @@ void main(void) {
     unsigned int bytes_sent=I2C_Multi_Write(slave_address,dummy_data,4);
     
     printf("Slave successfully received %d bytes of data\n\r\n\r",bytes_sent);
+    unsigned char data_received=I2C_Single_Read(slave_address);
+    printf("single data received=%d \n\r\n\r",data_received);
+    unsigned char multi_receive_data[4]={0,0,0,0};
+    unsigned receive_count=I2C_Multi_Read(slave_address,multi_receive_data,4);
+    printf("received %d bytes in multi receive: %d, ",receive_count,multi_receive_data[0]);
+    printf("%d, %d, %d \n\r\n\r",multi_receive_data[1],multi_receive_data[2],multi_receive_data[3]);
     }
     return;
 }
