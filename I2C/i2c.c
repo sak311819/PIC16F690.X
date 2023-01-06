@@ -36,7 +36,7 @@ bool I2C_Init(){
     return 1;
 }
 bool I2C_Start(){
-//    if(I2C_busy()){return 0;}
+   if(I2C_busy()){return 0;}
     SCL=1;
     I2C_Delay();
     SDA=0;
@@ -51,25 +51,27 @@ void I2C_Stop(){
     I2C_Delay();
     SDA=1;
     I2C_Delay();
+    I2C_Interrupt=0;
+    start_bit=0;
 }
 bool I2C_busy(){
-    bool flag=false;
+    bool flag=true;
     if(start_bit|stop_bit){
         if(start_bit==0 && stop_bit==1){flag=false;}
         else{flag=true;}
     }
-    else{bool flag=false;}
+    else{flag=false;}
     return flag;
 }
-void I2C_Delay(){
+void I2C_Delay(){   // tottaly arbitrary delay
     unsigned int i,j;
     for(i=0;i<2;i++);
 }
-unsigned int I2C_Multi_Write(unsigned char add,unsigned char* ptr,unsigned int len){
+unsigned int I2C_Multi_Write(unsigned char slave_address,unsigned char* ptr,unsigned int len){
     unsigned int count=0;
     while(!I2C_Start());
-//    add=add&0x7F;
-    if(NACK==I2C_Transmit_Byte(add)){
+//    slave_address=slave_address&0x7F;
+    if(NACK==I2C_Transmit_Byte(slave_address)){
         printf("Multi Write NACK\n\r");
         I2C_Stop();
         return 0;
@@ -88,10 +90,10 @@ unsigned int I2C_Multi_Write(unsigned char add,unsigned char* ptr,unsigned int l
         I2C_Stop();
     return count;
 }
-bool I2C_Single_Write(unsigned char add,unsigned char data){
+bool I2C_Single_Write(unsigned char slave_address,unsigned char data){
     while(!I2C_Start());
-//    add=add&0x7F;
-    if(NACK==I2C_Transmit_Byte(add)){
+//    slave_address=slave_address&0x7F;
+    if(NACK==I2C_Transmit_Byte(slave_address)){
         printf("Single Write NACK\n\r");
         I2C_Stop();
         return NACK;
@@ -101,10 +103,10 @@ bool I2C_Single_Write(unsigned char add,unsigned char data){
     I2C_Stop();
     return ACK;
 }
-unsigned char I2C_Single_Read(unsigned char add){
+unsigned char I2C_Single_Read(unsigned char slave_address){
     while(!I2C_Start());
-//    add=add&0xFF;
-    if(NACK==I2C_Transmit_Byte(add)){
+//    slave_address=slave_address&0xFF;
+    if(NACK==I2C_Transmit_Byte(slave_address)){
         printf("Single Read NACK\n\r");
         return 0;
     }
@@ -156,11 +158,11 @@ bool I2C_Transmit_Byte(unsigned char data){
     return I2C_Check_ACK();
 }
 
-unsigned int I2C_Multi_Read(unsigned char add,unsigned char*ptr,unsigned int len){
+unsigned int I2C_Multi_Read(unsigned char slave_address,unsigned char*ptr,unsigned int len){
     unsigned int count=0;
     while(!I2C_Start());
-    add=add&0x7F;
-    if(NACK==I2C_Transmit_Byte(add)){
+    slave_address=slave_address&0x7F;
+    if(NACK==I2C_Transmit_Byte(slave_address)){
         printf("Multi Read NACK\n\r");
         return 0;
     }
