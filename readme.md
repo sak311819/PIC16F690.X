@@ -8,4 +8,4 @@ test this code in hardware and identify any issues, please report it in the
 comments/bug/pull request etc.
 # Note:
 This code is under development and cannot be used in safety critical applications
-where it can cause damage to equipment, personnel at work or medical applications etc.
+where it can cause damage to equipment, personnel at work or medical applications etc. Use at your own risk!
