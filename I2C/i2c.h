@@ -1,8 +1,10 @@
 /*
  * File:   i2c.h
- * Author: Shahzad Anwar Khan
- * github.com/sak311819
- * Created on January 2, 2023, 11:26 AM
+ * Author: Shahzad Anwar Khan*/
+//*** github.com/sak311819
+//*** https://sak-engineering-lab.blogspot.com/ 
+//*** fiver.com/SAK_engineering
+ /* Created on January 2, 2023, 11:26 AM
  
     *******************  Copyright Note ***************************************************
     Anyone having this code can use it for deveoplment purposes only. Redistribution
