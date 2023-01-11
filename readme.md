@@ -21,4 +21,4 @@ I2C_Multi_Write(0x55,& buffer_to_be_sent,10);    // transmit 10 bytes to slave d
 
 # Note:
 This code is under development and cannot be used in safety critical applications
-where it can cause damage to equipment, personnel at work or medical applications etc.
+where it can cause damage to equipment, personnel at work or medical applications etc. Use at your own risk!
